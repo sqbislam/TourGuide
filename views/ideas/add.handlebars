@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<h2>Add Idea</h2>
+
+<div class="row">
+	<form action="/ideas" method="post" class="col s12">
+		
+		<div class="row">
+			<div class="input-field">
+				<input type="text" name="title">
+				<label for="title">Title</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<select name="status">
+					<option value="public" selected> Public </option>
+					<option value="private"> Private </option>
+					<option value="unpublished"> Unpublished </option>
+				</select>
+				<label for="status">Status</label>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<p>
+		      <label>
+		        <input type="checkbox" name="allowComments" class="filled-in" checked="checked" />
+		        <span>Allow Comments</span>
+		      </label>
+		    </p>
+		</div>
+
+		<div class="row">
+			<div class="input-field">
+				<h5>Note down your Idea:</h5>
+				<textarea name="body"> </textarea>
+			</div>
+		</div>
+
+		<input type="submit" value="submit" class="btn">
+	</form>
+
+</div>

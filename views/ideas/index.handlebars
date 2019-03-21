@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<h2>Ideas</h2>
+
+<div class="row">
+	
+	{{#each ideas}}
+		<div class = "col s12 m4">
+			<div class = "card">
+				<div class = "card-image">
+					{{#if user}}
+						{{{editIcon user.id ../user.id id }}}
+					{{/if}}
+				</div>
+				<div class = "card-content center-align">
+					<h5 class="idea-title">{{title}}</h5>
+					<p class = "idea-text"> {{stripTags (truncate body 150)}} </p>
+					<br>
+					<div class="chip">
+				    	<img src="{{user.image}}" alt="Contact Person">
+				    	<a href="/ideas/user/{{user.id}}">{{user.firstName}} {{user.lastName}}</a>
+				  	</div>
+				</div>
+				<div class="card-action center-align">
+					<a href="/ideas/show/{{id}}" class="btn grey">
+						Read More
+					</a>
+				</div>
+			</div>
+
+		</div>
+
+	{{else}}
+
+		<p>No Ideas Found</p>
+	
+
+	{{/each}}
+</div>
