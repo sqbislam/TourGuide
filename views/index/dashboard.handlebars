@@ -11,11 +11,26 @@
 
 </head>
 <body>
+	<br>
+	<br>
+	<h4 class="center-align">PLAN A TRIP</h4>
+	<br>
+	Selected Location: {{trip.loc}}
+	<div class="container">
+		<select class="slt-loc" name = "location" onchange="setLoc();">
+			{{#selects trip.loc}}
+			<option value="sylhet"> Sylhet </option>
+			<option value="ctg"> Chittagong </option>
+			<option value="dhk"> Dhaka </option>
+			{{/selects}}
+		</select>
+	</div>
+	<br>
+	<div class="btn-wrapper">
+		<a  href="/trips/accom" class="waves-effect blue btn-large btn-accom"> Accomodation </a>
+		<a  href="/trips/transport" class="waves-effect blue btn-large btn-trip"> Transport </a>
+	</div>
 
-	<h2>
-		Welcome to your IdeaSpace {{user.firstName}}
-	</h2>
-	<h4>Your Ideas</h4>
 	{{#if ideas}}
 	<table class="striped">
 		<thead>
@@ -53,9 +68,9 @@
 	</table>
 	
 	{{else}}
-	<p>You have not created any story yet</p>
 
 
 	{{/if}}
+	<script type="text/javascript" src="/js/help.js"></script>
 </body>
 </html>

@@ -38,8 +38,8 @@ mongoose.connect(keys.mongoURI,
 //Load routes
 const auth = require('./routes/auth');
 const index = require('./routes/index');
-const ideas = require('./routes/ideas')
-
+const ideas = require('./routes/ideas');
+const trips = require('./routes/trips');
 //init express app
 const app  = express();
 
@@ -77,9 +77,19 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+let trip = { 
+		loc: "Default",
+		accom: "No Accom",
+		transport: "no transport"
+	};
+app.locals.trip = trip;
 //Set global vars
 app.use((req, res, next) => {
+
 	res.locals.user = req.user || null;
+	res.locals.trip = trip;
+
 	next();
 })
 
@@ -91,9 +101,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/auth', auth);
 //Anything that goes to / will go to index route
 app.use('/', index);
-//Anything that goes to /stories will go to stoies route
+//Anything that goes to /ideas will go to ideas route
 app.use('/ideas', ideas);
-
+//Anything that goes to /trips will go to trips route
+app.use('/trips', trips);
 
 app.listen(port, ()=> {
 	

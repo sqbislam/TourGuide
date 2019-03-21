@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport')
 
-//Since in auth.js this equivalent to auth\google
+//Since in auth.js this equivalent to auth/google
 router.get('/google', passport.authenticate('google', {
 	scope:['profile', 'email']}));
 
@@ -25,6 +25,11 @@ router.get('/verify', (req, res) =>{
 });
 
 router.get('/logout', (req, res) =>{
+	//Removing stored data from session
+	req.app.locals.trip.loc = "null";
+	req.app.locals.trip.accom = "null";
+	req.app.locals.trip.transport = "null";
+
 	req.logout();
 	res.redirect('/')
 });

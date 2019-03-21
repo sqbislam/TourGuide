@@ -2,7 +2,12 @@
     display: flex;
     min-height: 110vh;
     flex-direction: column;
+    background-image: url("/images/vacation.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
+
+
 
   main {
     flex: 1 0 auto;
@@ -24,9 +29,26 @@
     text-transform: capitalize;
   }
 
+  .btn-trip{
+    display: block;
+    width: 40%;
+    float: right;
+  }
+
+  .btn-accom{
+    display: block;
+    width: 40%;
+    float: left;
+  }
+
+  .btn-wrapper{
+    margin: 10% 20% 20% 20%
+
+  }
   .idea-title{
     min-height: 80px
   }
+
   #delete-form{
     display: inline;
   }
