@@ -1,17 +1,14 @@
-# IdeaShare
-## Full Stack Online Application to Share Ideas
+# Tour Guide
+## Full Stack Online Application to Plan and Book Trips
 
 #### Implemented with Express, MongoDB, Node.js
 #### Supports Google Authentication
 
-**Platform for safe-keeping or sharing ideas.**
+**Platform for planning vacations and bookings.**
 
 - Easy registration using Google account
 - Simple interface
-- Access Control (Public or Private)
+- Access Control
 - Secured
 
 > More Functionalities coming soon...
-
-[Prototype Deployed v1, CHECK IT OUT HERE](https://gentle-ravine-20974.herokuapp.com/)
-
