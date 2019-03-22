@@ -20,8 +20,8 @@
 		<select class="slt-loc" name = "location" onchange="setLoc();">
 			{{#selects trip.loc}}
 			<option value="sylhet"> Sylhet </option>
-			<option value="ctg"> Chittagong </option>
-			<option value="dhk"> Dhaka </option>
+			<option value="chittagong"> Chittagong </option>
+			<option value="dhaka"> Dhaka </option>
 			{{/selects}}
 		</select>
 	</div>
@@ -31,46 +31,7 @@
 		<a  href="/trips/transport" class="waves-effect blue btn-large btn-trip"> Transport </a>
 	</div>
 
-	{{#if ideas}}
-	<table class="striped">
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Date</th>
-				<th>Status</th>
-				<th>...</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each ideas}}
-			<tr>
-				<td><a href="/ideas/show/{{id}}">{{title}}</a></td>
-				<td>{{formatDate date 'MMMM Do YYYY'}}</td>
-				<td><span class="dash-status">{{status}}</span></td>
-				<td><a href="/ideas/edit/{{id}}" class="btn-small left-align blue ">
-					<i class="fa fa-edit"></i>
-					Edit 
-					</a>
-					<form onsubmit="return submitForm(this);" 
-					action="/ideas/{{id}}?_method=DELETE" 
-					method="post" id="delete-form">
-						
-						<input type="hidden" name="_method" value="DELETE">
-						<button type="submit" class="btn-small red darken-2">
-							<i class="fa fa-minus-circle"></i>
-						Delete</button>
-					</form>
-				</td>
-				
-			</tr>
-			{{/each}}
-		</tbody>
-	</table>
-	
-	{{else}}
 
-
-	{{/if}}
 	<script type="text/javascript" src="/js/help.js"></script>
 </body>
 </html>

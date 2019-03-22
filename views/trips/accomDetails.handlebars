@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	
+<div class="row">
+
+	<div class="col s12 m8">
+		<h3>{{accom.title}}</h3>
+		<div class="card idea">
+			<div class="card-content">
+				<span class="card-title">{{accom.name}}</span>
+				<b style="text-transform: uppercase;">{{trip.loc}}</b>
+				<br>
+				{{{accom.location}}}
+
+			</div>
+		</div>
+
+		<div class="row">
+		{{#each accom.rooms}}
+		<div class="col s12 m6">
+			<div class="card" style="height: 430px">
+				<div class="card-image">
+					<img src="{{image}}" style="height: 200px">
+				</div>
+				<div class="card-content">
+					<h5>Type: {{type}}</h5>
+					<br>
+					<p>Available: {{available}} <br>
+						Price: {{price}} Tk/night
+					</p>
+				  	<br>
+				  	<a href="/trips/accom/{{_id}}" class="btn-small red center-align">Book</a>
+
+				</div>
+			</div>
+		</div>
+		{{/each}}
+		</div>
+
+	</div>
+
+	<div class="col s12 m4">
+		<div class="card" style="margin-top: 10%">
+	      <div class="card-image">
+	        <img src="{{accom.img}}" >
+	      </div>
+	      <div class="card-content">
+	      <span class="card-title center-align"><b>{{accom.name}}</b></span>
+	      </div>
+	    </div>
+	</div>
+</div>
+
+</body>
+</html>

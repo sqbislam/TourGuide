@@ -11,6 +11,7 @@ const methodOverride = require('method-override');
 //Load user model
 require('./models/User')
 require('./models/Idea')
+require('./models/Accomodations')
 
 //Load keys.js
 const keys = require('./config/keys');

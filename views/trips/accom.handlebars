@@ -8,11 +8,36 @@
 		{{trip.loc}}
 		{{trip.accom}}
 		{{trip.transport}}
-
+		
 	
-		<a href="/trips/accom/'newdasf'"> Change  </a>
-
-	</div>
+		<br>
+		{{#if accom}}
+		<div class="row">
+		{{#each accom}}
+			<a href="/trips/accom/show/{{_id}}">
+			    <div class="col s12 m6">
+			      <div class="card">
+			        <div class="card-image" >
+			          <img src="{{img}}" style="height: 200px">
+			          <span class="card-title">{{name}}</span>
+			        </div>
+					</a>
+			        <div class="card-content">
+			          <p>Address: {{location}}</p>
+			          <p>Starting from: {{range}} TK / night</p>
+			        </div>
+			      </div>
+			    </div>
+			 
+		
+		{{/each}}
+		</div>
+		{{else}}
+		
+		No accomodations found
+		
+		{{/if}}
+		</div>
 	
 </body>
 </html>
