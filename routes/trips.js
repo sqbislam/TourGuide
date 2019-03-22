@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const Accom = mongoose.model('accom');
 
-
+// helper method to add hotels
 router.get('/admin', (req, res) => {
 	const newAccom = {
 		name : "Grand Sultan Tea Resort & Golf",
@@ -60,6 +60,18 @@ router.get('/accom',ensureAuthenticated, (req, res) => {
 })
 
 //Book new accomodation
+router.post('/accom', ensureAuthenticated, (req, res) => {
+	const booking = {
+		name : req.body.name,
+		type : req.body.type,
+		id : req.body.id,
+		price: req.body.price
+	};
+	req.app.locals.trip.accom = booking;
+	res.redirect("/trips/accom");
+})
+
+//Book new accomodation
 router.get('/accom/:acc',ensureAuthenticated, (req, res) => {
 	let acc = req.params.acc;
 	req.app.locals.trip.accom = acc;
@@ -90,6 +102,11 @@ router.get('/accom/show/:id',ensureAuthenticated, (req, res) =>{
 		res.render("trips/accomDetails", {accom: accom})
 	});
 
+})
+
+//confirm booking
+router.get('/book',ensureAuthenticated, (req, res) => {
+		res.render('trips/book')
 })
 
 

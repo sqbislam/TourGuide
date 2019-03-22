@@ -28,10 +28,17 @@
 					<h5>Type: {{type}}</h5>
 					<br>
 					<p>Available: {{available}} <br>
-						Price: {{price}} Tk/night
+					   Price: {{price}} Tk/night
 					</p>
 				  	<br>
-				  	<a href="/trips/accom/{{_id}}" class="btn-small red center-align">Book</a>
+
+				  	<form action="/trips/accom/" method="post">
+				  		<input type="hidden" name="type" value="{{type}}">
+				  		<input type="hidden" name="name" value="{{../accom.name}}">
+				  		<input type="hidden" name="price" value="{{price}}">
+				  		<input type="hidden" name="id" value="{{_id}}">
+				  		<input type="submit" value="Book" class="btn-small red">
+				  	</form>
 
 				</div>
 			</div>
