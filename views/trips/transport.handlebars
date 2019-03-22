@@ -4,15 +4,57 @@
 	
 </head>
 <body>
+	
 	<div class="container">
 		{{trip.loc}}
-		{{trip.accom}}
+		{{trip.accom.name}}
+		{{trip.accom.type}}
+		{{trip.accom.id}}
 		{{trip.transport}}
-
+		{{trip.accom.price}}
 	
-		<a href="/trips/transport/'newdasf'"> Change </a>
+		<br>
+		{{#if tran}}
+		<div class="row">
+		{{#each tran}}	
+			    <div class="col s12 m6">
+			      <div class="card">
+			      	<form action="/trips/transport" method="post">
+			      		<input type="hidden" name="name" value="{{name}}">
+			      		<input type="hidden" name="location" value="{{location}}">
+			      		<input type="hidden" name="category" value="{{category}}">
+			      		
+			      		
+				        <div class="card-image" >
+				          <img src="{{img}}" style="height: 200px">
+				          <span class="card-title">{{name}}</span>
+				        </div>
+						
+				        <div class="card-content">
+				          <p>To: {{location}}</p>
+				          <p>{{category}}</p>
+				          		<select name="price">
+				          			{{#each ticket}}
+				          				<option value="{{price}}">{{type}} {{price}}</option>
+				          			{{/each}}
+				          		</select>
+				          		<input type="submit" value="book" class="btn-small red">
+				        </div>
+			          </form>
 
-	</div>
+
+			      </div>
+			    </div>
+			 
+		
+		{{/each}}
+		</div>
+		{{else}}
+		
+		No Transport found
+		
+		{{/if}}
+		</div>
 	
 </body>
 </html>

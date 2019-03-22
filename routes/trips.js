@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 //Load Idea Model
 const User = mongoose.model('users');
 const Accom = mongoose.model('accom');
+const Tran = mongoose.model('transport');
 
 // helper method to add hotels
 router.get('/admin', (req, res) => {
@@ -48,6 +49,36 @@ router.get('/admin', (req, res) => {
 
 })
 
+// helper method to add hotels
+router.get('/addT', (req, res) => {
+	const newTran= {
+		name : "Shohag Paribahan",
+		category : "Bus Service",
+		location : "chittagong",
+		img : "http://www.kemnejabo.com/wp-content/uploads/2018/05/qlze9enqpr6ghaszdk9mrm1rpuglfh4uww3itrke.png",
+		ticket: [
+			{
+				type:"AC",
+				price: 700
+			},
+			{
+				type:"Non-AC",
+				price: 500
+			}]
+		}
+
+	//Create Idea
+	new Tran(newTran)
+	.save()
+	.then(tran => {
+		console.log(tran);
+		res.redirect('/')
+	})
+
+})
+
+
+
 
 
 //Find Accomodations for selected city
@@ -68,7 +99,7 @@ router.post('/accom', ensureAuthenticated, (req, res) => {
 		price: req.body.price
 	};
 	req.app.locals.trip.accom = booking;
-	res.redirect("/trips/accom");
+	res.redirect("/");
 })
 
 //Book new accomodation
@@ -85,15 +116,30 @@ router.get('/loc/:loc', (req, res) =>{
 	res.redirect("/");
 })
 
+//Get Transport according to location to visit
 router.get('/transport',(req, res) => {
-	res.render("trips/transport");
+	Tran.find({location: req.app.locals.trip.loc})
+	.then(tran => {
+		console.log(tran);
+		res.render("trips/transport", {tran: tran});
+	});
 })
 
-router.get('/transport/:trn',(req, res) => {
-	let trn = req.params.trn;
-	req.app.locals.trip.transport = trn;
-	res.render("trips/transport");
+//Post Transport booker
+router.post('/transport',(req, res) => {
+	const booking = {
+		name : req.body.name,
+		location : req.body.location,
+		category : req.body.category,
+		price: req.body.price
+	};
+	req.app.locals.trip.transport = booking;
+	res.redirect("/");
 })
+
+
+
+
 
 //Show details about hotel
 router.get('/accom/show/:id',ensureAuthenticated, (req, res) =>{
