@@ -49,7 +49,7 @@ router.get('/admin', (req, res) => {
 
 })
 
-// helper method to add hotels
+// helper method to add busses
 router.get('/addT', (req, res) => {
 	const newTran= {
 		name : "Shohag Paribahan",
@@ -102,6 +102,7 @@ router.post('/accom', ensureAuthenticated, (req, res) => {
 	res.redirect("/");
 })
 
+
 //Book new accomodation
 router.get('/accom/:acc',ensureAuthenticated, (req, res) => {
 	let acc = req.params.acc;
@@ -109,12 +110,14 @@ router.get('/accom/:acc',ensureAuthenticated, (req, res) => {
 	res.redirect("/trips/accom");
 })
 
+
 //Set location
 router.get('/loc/:loc', (req, res) =>{
 	let loc = req.params.loc;
 	req.app.locals.trip.loc = loc;
 	res.redirect("/");
 })
+
 
 //Get Transport according to location to visit
 router.get('/transport',(req, res) => {
@@ -139,8 +142,6 @@ router.post('/transport',(req, res) => {
 
 
 
-
-
 //Show details about hotel
 router.get('/accom/show/:id',ensureAuthenticated, (req, res) =>{
 	Accom.findOne({_id: req.params.id})
@@ -153,6 +154,18 @@ router.get('/accom/show/:id',ensureAuthenticated, (req, res) =>{
 //confirm booking
 router.get('/book',ensureAuthenticated, (req, res) => {
 		res.render('trips/book')
+})
+
+
+//Add to Wish List
+router.get('/addWish', ensureAuthenticated, (req, res)=>{
+	const wish = {
+		accom: req.app.locals.trip.accom,
+		transport: req.app.locals.trip.transport
+		
+	}
+
+
 })
 
 

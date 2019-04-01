@@ -30,4 +30,12 @@ router.get('/about', (req, res) => {
 	res.render('index/about')
 })
 
+
+router.get('/locations', (req, res) => {
+
+	res.render('index/locations');
+})
+
+
+
 module.exports = router;
