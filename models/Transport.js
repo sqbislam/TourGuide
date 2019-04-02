@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 
-//Create Idea Schema
+//Create Transport Schema
 
 const TranSchema = new Schema({
 

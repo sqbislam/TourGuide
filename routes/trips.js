@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const User = mongoose.model('users');
 const Accom = mongoose.model('accom');
 const Tran = mongoose.model('transport');
+const WishList = mongoose.model('wishList');
+
 
 // helper method to add hotels
 router.get('/admin', (req, res) => {
@@ -160,12 +162,17 @@ router.get('/book',ensureAuthenticated, (req, res) => {
 //Add to Wish List
 router.get('/addWish', ensureAuthenticated, (req, res)=>{
 	const wish = {
+		user: req.user.id,
 		accom: req.app.locals.trip.accom,
 		transport: req.app.locals.trip.transport
-		
 	}
 
-
+	new WishList(wish)
+	.save()
+	.then(wish =>{ 
+		console.log(wish);
+		res.redirect('/')
+		});
 })
 
 

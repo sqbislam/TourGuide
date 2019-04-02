@@ -10,7 +10,7 @@ const methodOverride = require('method-override');
 
 //Load user model
 require('./models/User')
-require('./models/Idea')
+require('./models/WishList')
 require('./models/Accomodations')
 require('./models/Transport')
 
@@ -40,7 +40,7 @@ mongoose.connect(keys.mongoURI,
 //Load routes
 const auth = require('./routes/auth');
 const index = require('./routes/index');
-const ideas = require('./routes/ideas');
+
 const trips = require('./routes/trips');
 //init express app
 const app  = express();
@@ -103,8 +103,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/auth', auth);
 //Anything that goes to / will go to index route
 app.use('/', index);
-//Anything that goes to /ideas will go to ideas route
-app.use('/ideas', ideas);
+
 //Anything that goes to /trips will go to trips route
 app.use('/trips', trips);
 

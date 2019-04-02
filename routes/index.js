@@ -3,7 +3,7 @@ const router = express.Router();
 const {ensureAuthenticated, ensureGuest} = require('../helper/auth')
 //Bring in mongoose and idea model
 const mongoose = require('mongoose');
-const Idea = mongoose.model('ideas');
+
 
 
 router.get('/', ensureGuest, (req, res) => {
@@ -13,14 +13,8 @@ router.get('/', ensureGuest, (req, res) => {
 
 
 router.get('/dashboard',ensureAuthenticated , (req, res) => {
-	Idea.find({
-		user: req.user.id
-	})
-	.then(ideas => {
-		res.render('index/dashboard', {
-			ideas: ideas
-		})
-	});
+
+		res.render('index/dashboard');
 });
 
 
