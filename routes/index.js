@@ -5,6 +5,9 @@ const {ensureAuthenticated, ensureGuest} = require('../helper/auth')
 const mongoose = require('mongoose');
 
 
+const WishList = mongoose.model('wishList');
+
+
 
 router.get('/', ensureGuest, (req, res) => {
 
@@ -15,6 +18,15 @@ router.get('/', ensureGuest, (req, res) => {
 router.get('/dashboard',ensureAuthenticated , (req, res) => {
 
 		res.render('index/dashboard');
+});
+
+
+router.get('/wishlist', ensureAuthenticated, (req, res) => {
+	WishList.find({user: req.user.id})
+	.then(wish => {
+		console.log(wish);
+		res.render('index/wishlist', {wish:wish});
+	});
 });
 
 
